@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { getStorage } from "firebase/storage";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -10,7 +11,7 @@ const firebaseConfig = {
   apiKey: "AIzaSyAQNYXmNXks0tB3QW8HWQzWZJsqS8WRqP8",
   authDomain: "job-application-ba250.firebaseapp.com",
   projectId: "job-application-ba250",
-  storageBucket: "job-application-ba250.firebasestorage.app",
+  storageBucket: "job-application-ba250.appspot.com",
   messagingSenderId: "343987470718",
   appId: "1:343987470718:web:c971b7bbd35da5606b732f",
   measurementId: "G-06SSJRQ1V8"
@@ -19,3 +20,5 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
+const storage = getStorage(app); 
+export { storage };
