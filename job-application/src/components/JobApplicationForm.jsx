@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { storage } from '../services/firebase';
+import { storage } from '../services/firebase'; // ✅ Correct Import
 import { ref, uploadBytes } from 'firebase/storage';
 
 function JobApplicationForm() {
@@ -10,10 +10,10 @@ function JobApplicationForm() {
     e.preventDefault();
     if (!file) return alert("Please upload a CV");
 
-    const cvRef = ref(storage, `cvs/${file.name}`);
+    const cvRef = ref(storage, `cvs/${file.name}`); // ✅ Upload to Firebase Storage
     await uploadBytes(cvRef, file);
 
-    const response = await fetch('https://your-firebase-function-url', {
+    const response = await fetch('https://us-central1-job-application-ba250.cloudfunctions.net/submitJobApplication', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ...formData, cvFileName: file.name }),
